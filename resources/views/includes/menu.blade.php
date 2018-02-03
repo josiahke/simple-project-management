@@ -16,7 +16,7 @@
 @role('manager')
 
     <ul class="list-unstyled components">
-        <li class="active">
+        <li class="">
             <a href="{{route('manager.home')}}">
                 <i class="glyphicon glyphicon-home"></i>
                 Home

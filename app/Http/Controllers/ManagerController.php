@@ -16,4 +16,8 @@ class ManagerController extends Controller
         return view('admin.index');
     }
 
+    public function settings(Request $request){
+        return view('settings.index');
+    }
+
 }

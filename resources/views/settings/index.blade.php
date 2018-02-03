@@ -7,10 +7,10 @@
  */
 ?>
 
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -29,12 +29,12 @@
                             <div id="t1" class="tab-pane fade in active">
                                 <table class="table table-bordered table-condensed" id="users">
                                     <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Role</th>
-                                            <th>Dept</th>
-                                            <th>Tools</th>
-                                        </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Dept</th>
+                                        <th>Tools</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
 

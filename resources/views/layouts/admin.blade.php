@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('js/datatables.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('js/validation/validationEngine.jquery.css')}}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="{{ asset('css/style5.css') }}" rel="stylesheet">
 
@@ -22,6 +24,8 @@
             padding-left: 0px;
         }
     </style>
+
+    @yield('css')
 
 </head>
 <body>
@@ -89,6 +93,10 @@
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{asset('js/validation/jquery.validationEngine-en.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/validation/jquery.validationEngine.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -99,7 +107,31 @@
     });
 </script>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        jQuery("form").validationEngine('attach', { prettySelect: true, usePrefix: 's2id_',useSuffix: "select2-offscreen", autoPositionUpdate: true });
+        var curpage = '{{Request::url()}}';
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+</script>
+
+<script>
+    var curpage = '{{Request::url()}}';
+    $( "#sidebar li" ).each( function( index, element ){
+        var url = $( this ).find( "a" ).attr('href');
+        if (curpage == url ) 	{
+            $(this).addClass('active');
+        }
+    });
+</script>
+
+<script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
+
+@yield('js')
+
 </body>
 </html>
