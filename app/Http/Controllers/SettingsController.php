@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Carbon\Carbon;
 
 use Auth;
@@ -25,6 +26,8 @@ use \App\Models\UserDepartment;
 use \App\Models\TaskPriority;
 use \App\Models\TaskCategory;
 use \App\Models\ReminderType;
+use App\User;
+
 
 
 

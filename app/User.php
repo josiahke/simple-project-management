@@ -33,5 +33,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Task','user_id','id');
     }
 
+    public function department()
+    {
+        return $this->HasOne('App\Models\UserDepartment','id','dept_id');
+    }
+
 
 }
