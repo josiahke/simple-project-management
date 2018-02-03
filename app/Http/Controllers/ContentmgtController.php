@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \App\library\CustomResponses;
+
 use \App\Models\Task;
 
 
@@ -17,8 +18,6 @@ class ContentmgtController extends Controller
         $this->middleware('auth');
     }
 
-
-
     public function create_task (Request $request) {
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->except('_token'), [
@@ -30,7 +29,7 @@ class ContentmgtController extends Controller
             ]);
             if ($validator->fails()) {
                 //return redirect()->back()->withError('Enter valid username and/or password. Please check you input once again');
-                self::invalid_request('no','enter valid information','warning');
+                $this->invalid_request('no','enter valid information','warning');
             } else {
                 $task = new Task();
                 $task->fill($request->except('_token'));
@@ -41,15 +40,16 @@ class ContentmgtController extends Controller
                     //notification group
                     self::create_user_notifications($request,$saved);
                     //done
-                    self::complete_request('no','Task created','success');
+                    $this->complete_request('no','Task created','success');
                 }
-                self::invalid_request('no','Task not created','error');
+                $this->invalid_request('no','Task not created','error');
             }
         }
-        self::invalid_request('no','invalid request','error');
+        $this->invalid_request('no','invalid request','error');
     }
 
     public function create_user_access ($request,$task) {
+        $new = new TaskUserAccess();
 
     }
 

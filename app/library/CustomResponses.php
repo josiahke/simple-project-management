@@ -6,7 +6,7 @@
  * Time: 12:57
  */
 
-namespace \App\library\;
+namespace App\library;
 
 trait CustomResponses {
 
