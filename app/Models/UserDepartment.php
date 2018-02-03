@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 /**
  * Class UserDepartment
@@ -23,9 +24,21 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class UserDepartment extends Eloquent
 {
+    use Sluggable;
+
 	protected $fillable = [
 		'name',
 		'slug',
 		'description'
 	];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
 }

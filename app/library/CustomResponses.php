@@ -14,12 +14,27 @@ trait CustomResponses {
         if ($api == 'yes') {
             return response()->json(['message' => $message,'message_type' => $message_type]);
         }
-        return redirect()->back()->withError($message);
+        return self::determine_msg_type($message_type,$message);
     }
 
     public function complete_request($api='no',$message='', $message_type='') {
         if ($api == 'yes') {
             return response()->json(['message' => $message, 'message_type' => $message_type ]);
+        }
+        return self::determine_msg_type($message_type,$message);
+    }
+
+    public function determine_msg_type ($msg_type,$message) {
+        if ($msg_type == 'success') {
+            return redirect()->back()->withSuccess($message);
+        }if ($msg_type == 'warning') {
+            return redirect()->back()->withWarning($message);
+        }if ($msg_type == 'info') {
+            return redirect()->back()->withInfo($message);
+        }if ($msg_type == 'error') {
+            return redirect()->back()->withError($message);
+        }if ($msg_type == 'message') {
+            return redirect()->back()->withMessage($message);
         }
         return redirect()->back()->withError($message);
     }

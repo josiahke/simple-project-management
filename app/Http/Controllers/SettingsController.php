@@ -45,11 +45,11 @@ class SettingsController extends Controller
         $new->fill($request->except('_token'));
         $saved = $new->save();
         if (!$saved){
-            $this->invalid_request('no','user department was not created','error');
+            return $this->invalid_request('no','user department was not created','error');
         }
         else
         {
-            $this->complete_request('no','user department was created','success');
+            return $this->complete_request('no','user department was created','success');
         }
     }
 
@@ -59,15 +59,15 @@ class SettingsController extends Controller
             $edit->fill($request->except('_token'));
             $saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','user department was not created','error');
+                return $this->invalid_request('no','user department was not created','error');
             }
             else
             {
-                $this->complete_request('no','user department was created','success');
+                return $this->complete_request('no','user department was created','success');
             }
         }
         else {
-            $this->invalid_request('no','user department was not edited, invalid id','error');
+            return $this->invalid_request('no','user department was not edited, invalid id','error');
         }
     }
 
@@ -76,11 +76,11 @@ class SettingsController extends Controller
         $new->fill($request->except('_token'));
         $saved = $new->save();
         if (!$saved){
-            $this->invalid_request('no','task priority was not created','error');
+            return $this->invalid_request('no','task priority was not created','error');
         }
         else
         {
-            $this->complete_request('no','task priority was created','success');
+            return $this->complete_request('no','task priority was created','success');
         }
     }
 
@@ -90,15 +90,15 @@ class SettingsController extends Controller
             $edit->fill($request->except('_token'));
             $saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','task priority was not created','error');
+                return $this->invalid_request('no','task priority was not created','error');
             }
             else
             {
-                $this->complete_request('no','task priority was edited','success');
+                return $this->complete_request('no','task priority was edited','success');
             }
         }
         else {
-            $this->invalid_request('no','task priority was not edited, invalid id','error');
+            return $this->invalid_request('no','task priority was not edited, invalid id','error');
         }
     }
 
@@ -107,11 +107,11 @@ class SettingsController extends Controller
         $new->fill($request->except('_token'));
         $saved = $new->save();
         if (!$saved){
-            $this->invalid_request('no','task category was not created','error');
+            return $this->invalid_request('no','task category was not created','error');
         }
         else
         {
-            $this->complete_request('no','task category was created','success');
+            return $this->complete_request('no','task category was created','success');
         }
     }
 
@@ -121,15 +121,15 @@ class SettingsController extends Controller
             $edit->fill($request->except('_token'));
             $saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','task category was not created','error');
+                return  $this->invalid_request('no','task category was not created','error');
             }
             else
             {
-                $this->complete_request('no','task category was edited','success');
+                return  $this->complete_request('no','task category was edited','success');
             }
         }
         else {
-            $this->invalid_request('no','task category was not edited, invalid id','error');
+            return $this->invalid_request('no','task category was not edited, invalid id','error');
         }
     }
 
@@ -138,11 +138,11 @@ class SettingsController extends Controller
         $new->fill($request->except('_token'));
         $saved = $new->save();
         if (!$saved){
-            $this->invalid_request('no','reminder type was not created','error');
+            return $this->invalid_request('no','reminder type was not created','error');
         }
         else
         {
-            $this->complete_request('no','reminder type was created','success');
+            return  $this->complete_request('no','reminder type was created','success');
         }
     }
 
@@ -152,15 +152,15 @@ class SettingsController extends Controller
             $edit->fill($request->except('_token'));
             $saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','reminder type was not created','error');
+                return   $this->invalid_request('no','reminder type was not created','error');
             }
             else
             {
-                $this->complete_request('no','reminder type was edited','success');
+                return  $this->complete_request('no','reminder type was edited','success');
             }
         }
         else {
-            $this->invalid_request('no','reminder type was not edited, invalid id','error');
+            return  $this->invalid_request('no','reminder type was not edited, invalid id','error');
         }
     }
 
@@ -171,11 +171,11 @@ class SettingsController extends Controller
         $new->fill($data);
         $saved = $new->save();
         if (!$saved){
-            $this->invalid_request('no','user was not created','error');
+            return  $this->invalid_request('no','user was not created','error');
         }
         else
         {
-            $this->complete_request('no','user was created','success');
+            return  $this->complete_request('no','user was created','success');
         }
     }
 
@@ -186,15 +186,15 @@ class SettingsController extends Controller
             $edit->password = Hash::make($request->get('pwd'));
             $saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','user was not edited','error');
+                return  $this->invalid_request('no','user was not edited','error');
             }
             else
             {
-                $this->complete_request('no','user was edited','success');
+                return  $this->complete_request('no','user was edited','success');
             }
         }
         else {
-            $this->invalid_request('no','user was not edited, invalid id','error');
+            return $this->invalid_request('no','user was not edited, invalid id','error');
         }
     }
 
@@ -210,15 +210,15 @@ class SettingsController extends Controller
             //$edit->fill($request->except('_token'));
             //$saved = $edit>save();
             if (!$saved){
-                $this->invalid_request('no','user was not edited','error');
+                return  $this->invalid_request('no','user was not edited','error');
             }
             else
             {
-                $this->complete_request('no','user was edited','success');
+                return   $this->complete_request('no','user was edited','success');
             }
         }
         else {
-            $this->invalid_request('no','user was not edited, invalid id','error');
+            return $this->invalid_request('no','user was not edited, invalid id','error');
         }
     }
 
