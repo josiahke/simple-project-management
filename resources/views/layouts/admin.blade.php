@@ -15,6 +15,14 @@
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="{{ asset('css/style5.css') }}" rel="stylesheet">
+
+    <style>
+        .container-fluid {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+    </style>
+
 </head>
 <body>
 

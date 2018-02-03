@@ -15,60 +15,54 @@
 
 @role('manager')
 
-
-
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+            <a href="{{route('manager.home')}}">
                 <i class="glyphicon glyphicon-home"></i>
                 Home
             </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li><a href="#">Home 1</a></li>
-                <li><a href="#">Home 2</a></li>
-                <li><a href="#">Home 3</a></li>
-            </ul>
         </li>
+
         <li>
-            <a href="#">
-                <i class="glyphicon glyphicon-briefcase"></i>
-                About
-            </a>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                <i class="glyphicon glyphicon-duplicate"></i>
-                Pages
-            </a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-paperclip"></i> Tasks and followups </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li><a href="#"> My Tasks</a></li>
+                <li><a href="#"> Department Tasks</a></li>
+                <li><a href="#"> Other Tasks</a></li>
             </ul>
         </li>
+
         <li>
             <a href="#">
-                <i class="glyphicon glyphicon-link"></i>
-                Portfolio
+                <i class="glyphicon glyphicon-book"></i>
+                Reports
             </a>
         </li>
+
         <li>
-            <a href="#">
-                <i class="glyphicon glyphicon-paperclip"></i>
-                FAQ
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="glyphicon glyphicon-send"></i>
-                Contact
+            <a href="{{route('manager.settings')}}">
+                <i class="glyphicon glyphicon-cog"></i>
+                Settings
             </a>
         </li>
     </ul>
 
-
-
-
-
 @else
+
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="{{route('staff.home')}}" data-toggle="collapse" aria-expanded="false">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{route('staff.tasks')}}">
+                    <i class="glyphicon glyphicon-paperclip"></i>
+                    My Tasks
+                </a>
+            </li>
+        </ul>
 
 
 @endrole
