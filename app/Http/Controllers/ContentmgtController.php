@@ -4,9 +4,29 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use Auth;
+use Validator;
+use Hash;
+use Mail;
+
+use Config;
+use Session;
+use Input;
+use View;
+use DB;
+use Log;
+use Datatables;
+
 use \App\library\CustomResponses;
 
 use \App\Models\Task;
+use \App\Models\TaskUserAccess;
+use \App\Models\TaskAttachment;
+use \App\Models\TaskCategory;
+use \App\Models\TaskPriority;
+use \App\Models\TaskProgress;
+use \App\Models\TaskReminder;
 
 
 class ContentmgtController extends Controller
@@ -32,7 +52,7 @@ class ContentmgtController extends Controller
                 $this->invalid_request('no','enter valid information','warning');
             } else {
                 $task = new Task();
-                $task->fill($request->except('_token'));
+                $task->fill($request->except('_token','access_'));
                 $saved = $task->save();
                 if ($saved){
                     //assign users
