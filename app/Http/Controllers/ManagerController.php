@@ -55,10 +55,79 @@ class ManagerController extends Controller
         aria-expanded='true'> Actions
         </button>
         <ul class='dropdown-menu pull-right' role='menu'>
-			
+			<li><a href='#' data-url='" . route('settings.edit.user.password',$list->id) . "' data-toggle=\"modal\" data-target=\"#editPwd\" > Edit password </a></li>
+			<li><a href='#' data-url='" . route('settings.edit.user.profile',$list->id) . "' data-name='".$list->name."' data-dept='".$list->dept_id."' data-toggle=\"modal\" data-target=\"#editProfile\" > Edit profile </a></li>                 
         </ul>
         </div>";
             })
+        ->rawColumns(['tools'])
+        ->make();
+    }
+
+    public function listTaskPriority (Request $request) {
+        return Datatables::of(TaskPriority::query())
+        ->addColumn('tools', function ($list)  {
+                return "
+        <div class='btn-group pull-right'>
+        <button type='button' class='btn green btn-sm btn-outline dropdown-toggle' data-toggle='dropdown'
+        aria-expanded='true'> Actions
+        </button>
+        <ul class='dropdown-menu pull-right' role='menu'>
+			<li><a href='#' data-url='" . route('settings.edit.task.priority',$list->id) . "' data-name='".$list->name."' data-toggle=\"modal\" data-target=\"#editTaskPriority\" > Edit </a></li>                 
+        </ul>
+        </div>";
+        })
+        ->rawColumns(['tools'])
+        ->make();
+    }
+
+    public function listTaskCategory (Request $request) {
+        return Datatables::of(TaskCategory::query())
+        ->addColumn('tools', function ($list)  {
+                return "
+        <div class='btn-group pull-right'>
+        <button type='button' class='btn green btn-sm btn-outline dropdown-toggle' data-toggle='dropdown'
+        aria-expanded='true'> Actions
+        </button>
+        <ul class='dropdown-menu pull-right' role='menu'>
+			<li><a href='#' data-url='" . route('settings.edit.task.category',$list->id) . "' data-name='".$list->name."' data-toggle=\"modal\" data-target=\"#editTaskCategory\" > Edit </a></li>                 
+        </ul>
+        </div>";
+        })
+        ->rawColumns(['tools'])
+        ->make();
+    }
+
+    public function listReminderTypes (Request $request) {
+        return Datatables::of(ReminderType::query())
+        ->addColumn('tools', function ($list)  {
+                return "
+        <div class='btn-group pull-right'>
+        <button type='button' class='btn green btn-sm btn-outline dropdown-toggle' data-toggle='dropdown'
+        aria-expanded='true'> Actions
+        </button>
+        <ul class='dropdown-menu pull-right' role='menu'>
+			<li><a href='#' data-url='" . route('settings.edit.reminder.type',$list->id) . "' data-name='".$list->name."' data-toggle=\"modal\" data-target=\"#editReminderType\" > Edit </a></li>                 
+        </ul>
+        </div>";
+        })
+        ->rawColumns(['tools'])
+        ->make();
+    }
+
+    public function listUserDepartments (Request $request) {
+        return Datatables::of(UserDepartment::query())
+        ->addColumn('tools', function ($list)  {
+                return "
+        <div class='btn-group pull-right'>
+        <button type='button' class='btn green btn-sm btn-outline dropdown-toggle' data-toggle='dropdown'
+        aria-expanded='true'> Actions
+        </button>
+        <ul class='dropdown-menu pull-right' role='menu'>
+			<li><a href='#' data-url='" . route('settings.edit.user.department',$list->id) . "' data-name='".$list->name."' data-toggle=\"modal\" data-target=\"#editUserDept\" > Edit </a></li>                 
+        </ul>
+        </div>";
+        })
         ->rawColumns(['tools'])
         ->make();
     }

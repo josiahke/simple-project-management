@@ -23,6 +23,9 @@
             padding-right: 0px;
             padding-left: 0px;
         }
+        .tab-content > .tab-pane {
+            padding-top: 10px;
+        }
     </style>
 
     @yield('css')
@@ -132,6 +135,10 @@
 <script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
 
 @yield('js')
+
+@include('includes.messages')
+
+@yield('modals')
 
 </body>
 </html>
