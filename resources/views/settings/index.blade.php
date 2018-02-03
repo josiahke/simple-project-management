@@ -74,6 +74,10 @@
                                 </table>
                             </div>
                             <div id="t4" class="tab-pane fade">
+
+                                <a href='#' class="pull-right btn btn-default" data-url='{{route('settings.add.reminder.type')}}' data-toggle="modal" data-target="#editReminderType" > Add New </a>
+
+
                                 <table class="table table-bordered table-striped table-hover" id="reminder_types" width="100%">
                                     <thead>
                                     <tr>
@@ -89,8 +93,7 @@
                             </div>
                             <div id="t5" class="tab-pane fade">
 
-                                <a href='#' data-url='{{route('settings.add.user.department')}}' data-toggle="modal" data-target="#editUserDept" > Add New </a>
-
+                                <a href='#' class="pull-right btn btn-default" data-url='{{route('settings.add.user.department')}}' data-toggle="modal" data-target="#editUserDept" > Add New </a>
 
                                 <table class="table table-bordered table-striped table-hover" id="user_department" width="100%">
                                     <thead>
@@ -323,6 +326,54 @@
             var button = $(event.relatedTarget);
             $('#editUserDeptForm').attr('action', button.data('url'));
             $('#name').val(button.data('name'));
+        })
+    </script>
+
+    <div class="modal fade" id="editReminderType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 id="edit-header-txt" class="text-center"> Reminder Type </h5>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post" id="editReminderTypeForm" enctype="multipart/form-data" >
+                        {{ csrf_field() }}
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label> Name : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required]" name="name" id="name" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div >
+                                    <button type="submit" name="Update" value="Update" class="btn btn-success">
+                                        <i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#editReminderType').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            $('#editReminderTypeForm').attr('action', button.data('url'));
+            $('#editReminderTypeForm #name').val(button.data('name'));
         })
     </script>
 
