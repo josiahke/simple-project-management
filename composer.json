@@ -6,16 +6,21 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "caffeinated/shinobi": "^3.1",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.4.0",
+        "reliese/laravel": "^0.0.13",
+        "yajra/laravel-datatables-oracle": "^8.3"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "symfony/thanks": "^1.0"
+        "symfony/thanks": "^1.0",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [
