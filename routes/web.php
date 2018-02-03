@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::group(['middleware' => ['auth','manager'], 'prefix' => 'manager'], function () {
-    Route::any('/home', 'ManagerController@my_profile')->name('manager.home');
+    Route::any('/home', 'ManagerController@index')->name('manager.home');
 });
 
 // normal user account urls
