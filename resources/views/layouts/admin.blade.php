@@ -43,7 +43,7 @@
     <!-- Page Content Holder -->
     <div id="content">
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default menu">
             <div class="container-fluid">
 
                 <div class="navbar-header">

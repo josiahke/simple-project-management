@@ -7,7 +7,7 @@
  */
 ?>
 
-<nav id="sidebar">
+<nav id="sidebar" class="menu">
     <div class="sidebar-header">
         <h3>Project Mgt</h3>
         <strong>PM</strong>

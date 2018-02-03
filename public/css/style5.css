@@ -99,11 +99,11 @@ a, a:hover, a:focus {
 }
 
 
-a[data-toggle="collapse"] {
+.menu a[data-toggle="collapse"] {
     position: relative;
 }
 
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+.menu a[aria-expanded="false"]::before, .menu a[aria-expanded="true"]::before {
     content: '\e259';
     display: block;
     position: absolute;
@@ -111,7 +111,8 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     font-family: 'Glyphicons Halflings';
     font-size: 0.6em;
 }
-a[aria-expanded="true"]::before {
+
+.menu a[aria-expanded="true"]::before {
     content: '\e260';
 }
 

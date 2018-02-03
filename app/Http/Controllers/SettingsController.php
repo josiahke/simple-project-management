@@ -56,14 +56,14 @@ class SettingsController extends Controller
     public function edit_user_department(Request $request,$id){
         $edit = UserDepartment::where('id','=',$id)->first();
         if ($edit) {
-            $edit->fill($request->except('_token'));
-            $saved = $edit>save();
+            $saved = $edit->update($request->except('_token'));
+            //$saved = $edit>save();
             if (!$saved){
-                return $this->invalid_request('no','user department was not created','error');
+                return $this->invalid_request('no','user department was not edited','error');
             }
             else
             {
-                return $this->complete_request('no','user department was created','success');
+                return $this->complete_request('no','user department was edited','success');
             }
         }
         else {
@@ -87,10 +87,10 @@ class SettingsController extends Controller
     public function edit_task_priority (Request $request,$id){
         $edit = TaskPriority::where('id','=',$id)->first();
         if ($edit) {
-            $edit->fill($request->except('_token'));
-            $saved = $edit>save();
+            $saved = $edit->update($request->except('_token'));
+//            $saved = $edit>save();
             if (!$saved){
-                return $this->invalid_request('no','task priority was not created','error');
+                return $this->invalid_request('no','task priority was not edited','error');
             }
             else
             {
@@ -118,10 +118,10 @@ class SettingsController extends Controller
     public function edit_task_category (Request $request,$id){
         $edit = TaskCategory::where('id','=',$id)->first();
         if ($edit) {
-            $edit->fill($request->except('_token'));
-            $saved = $edit>save();
+            $saved =  $edit->update($request->except('_token'));
+            //$saved = $edit>save();
             if (!$saved){
-                return  $this->invalid_request('no','task category was not created','error');
+                return  $this->invalid_request('no','task category was not edited','error');
             }
             else
             {
@@ -149,10 +149,10 @@ class SettingsController extends Controller
     public function edit_reminder_type (Request $request,$id){
         $edit = ReminderType::where('id','=',$id)->first();
         if ($edit) {
-            $edit->fill($request->except('_token'));
-            $saved = $edit>save();
+            $saved = $edit->update($request->except('_token'));
+//            $saved = $edit>save();
             if (!$saved){
-                return   $this->invalid_request('no','reminder type was not created','error');
+                return   $this->invalid_request('no','reminder type was not edited','error');
             }
             else
             {
@@ -205,8 +205,8 @@ class SettingsController extends Controller
             //if ($request->get('password')){
                 //$data['password'] = Hash::make($request->get('password'));
             //}
-            $edit->fill($data);
-            $saved = $edit->save();
+            $saved = $edit->update($data);
+            //$saved = $edit->save();
             //$edit->fill($request->except('_token'));
             //$saved = $edit>save();
             if (!$saved){

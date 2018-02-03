@@ -46,6 +46,8 @@
                                 </table>
                             </div>
                             <div id="t2" class="tab-pane fade">
+                                <a href='#' class="pull-right btn btn-default" data-url='{{route('settings.add.task.priority')}}' data-toggle="modal" data-target="#editTaskPriority" > Add New </a>
+
                                 <table class="table table-bordered table-striped table-hover" id="task_priority" width="100%">
                                     <thead>
                                     <tr>
@@ -60,6 +62,8 @@
                                 </table>
                             </div>
                             <div id="t3" class="tab-pane fade">
+                                <a href='#' class="pull-right btn btn-default" data-url='{{route('settings.add.task.category')}}' data-toggle="modal" data-target="#editTaskCategory" > Add New </a>
+
                                 <table class="table table-bordered table-striped table-hover" id="task_category" width="100%">
                                     <thead>
                                     <tr>
@@ -374,6 +378,167 @@
             var button = $(event.relatedTarget);
             $('#editReminderTypeForm').attr('action', button.data('url'));
             $('#editReminderTypeForm #name').val(button.data('name'));
+        })
+    </script>
+
+
+    <div class="modal fade" id="editTaskCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 id="edit-header-txt" class="text-center"> Task Category </h5>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post" id="editTaskCategoryForm" enctype="multipart/form-data" >
+                        {{ csrf_field() }}
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label> Name : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required]" name="name" id="name" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div >
+                                    <button type="submit" name="Update" value="Update" class="btn btn-success">
+                                        <i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#editTaskCategory').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            $('#editTaskCategoryForm').attr('action', button.data('url'));
+            $('#editTaskCategoryForm #name').val(button.data('name'));
+        })
+    </script>
+
+    <div class="modal fade" id="editTaskPriority" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 id="edit-header-txt" class="text-center"> Task Priority </h5>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post" id="editTaskPriorityForm" enctype="multipart/form-data" >
+                        {{ csrf_field() }}
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label> Name : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required]" name="name" id="name" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div >
+                                    <button type="submit" name="Update" value="Update" class="btn btn-success">
+                                        <i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#editTaskPriority').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            $('#editTaskPriorityForm').attr('action', button.data('url'));
+            $('#editTaskPriorityForm #name').val(button.data('name'));
+        })
+    </script>
+
+
+    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 id="edit-header-txt" class="text-center"> User Profile </h5>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post" id="editProfileForm" enctype="multipart/form-data" >
+                        {{ csrf_field() }}
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label> Name : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required]" name="name" id="name" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label> Department : </label>
+                                <div >
+                                    {{--<input type="text" value="" name="name" id="name" placeholder="">--}}
+                                    <select name="dept_id" class="form-control validate[required]" id="dept_id" >
+                                            <option value=""> select one </option>
+                                            @foreach ($user_dept as $list)
+                                                <option value="{{$list->id}}"> {{$list->name}}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div >
+                                    <button type="submit" name="Update" value="Update" class="btn btn-success">
+                                        <i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#editProfile').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            $('#editProfileForm').attr('action', button.data('url'));
+            $('#editProfileForm #name').val(button.data('name'));
+            $('#editProfileForm #dept_id').val(button.data('dept_id'));
+            // $('#editProfileForm #dept_id').val(button.data('role_id'));
         })
     </script>
 

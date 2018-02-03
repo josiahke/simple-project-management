@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -43,7 +44,9 @@ class ManagerController extends Controller
     }
 
     public function settings(Request $request){
-        return view('settings.index');
+        $user_dept = UserDepartment::all();
+        $user_roles = Role::all();
+        return view('settings.index',compact('user_dept','user_roles'));
     }
 
     public function listUsers (Request $request) {
@@ -56,7 +59,7 @@ class ManagerController extends Controller
         </button>
         <ul class='dropdown-menu pull-right' role='menu'>
 			<li><a href='#' data-url='" . route('settings.edit.user.password',$list->id) . "' data-toggle=\"modal\" data-target=\"#editPwd\" > Edit password </a></li>
-			<li><a href='#' data-url='" . route('settings.edit.user.profile',$list->id) . "' data-name='".$list->name."' data-dept='".$list->dept_id."' data-toggle=\"modal\" data-target=\"#editProfile\" > Edit profile </a></li>                 
+			<li><a href='#' data-url='" . route('settings.edit.user.profile',$list->id) . "' data-name='".$list->name."' data-dept_id='".$list->dept_id."' data-toggle=\"modal\" data-target=\"#editProfile\" > Edit profile </a></li>                 
         </ul>
         </div>";
             })
