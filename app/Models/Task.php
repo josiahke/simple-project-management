@@ -46,4 +46,22 @@ class Task extends Eloquent
 		'due_date',
 		'status'
 	];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model)
+        {
+            $model->user_id = Auth::user()->id;
+            //$model->updated_by = Auth::user()->id;
+        });
+
+        static::updating(function($model)
+        {
+            //$model->updated_by = Auth::user()->id;
+        });
+    }
+
+
 }

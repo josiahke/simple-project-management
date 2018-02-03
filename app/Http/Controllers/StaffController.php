@@ -10,5 +10,5 @@ class StaffController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 }
