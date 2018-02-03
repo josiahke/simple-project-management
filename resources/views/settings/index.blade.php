@@ -553,4 +553,60 @@
         })
     </script>
 
+
+    <div class="modal fade" id="editPwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 id="edit-header-txt" class="text-center"> User Profile </h5>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post" id="editPwdForm" enctype="multipart/form-data" >
+                        {{ csrf_field() }}
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label> Password : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required]" name="pwd" id="pwd" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label> Confirm Password : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required,equals[pwd]]" name="cpwd" id="cpwd" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div >
+                                    <button type="submit" name="Update" value="Update" class="btn btn-success">
+                                        <i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#editPwd').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            $('#editPwdForm').attr('action', button.data('url'));
+        })
+    </script>
+
 @endsection

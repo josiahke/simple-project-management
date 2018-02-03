@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'settings'], function () {
     Route::any('/settings/edit/task/category/{id}', ['nocsrf' => TRUE,'uses' => 'SettingsController@edit_task_category'])->name('settings.edit.task.category');
     Route::any('/settings/edit/reminder/type/{id}', ['nocsrf' => TRUE,'uses' => 'SettingsController@edit_reminder_type'])->name('settings.edit.reminder.type');
     Route::any('/settings/edit/user/dept/{id}', ['nocsrf' => TRUE,'uses' => 'SettingsController@edit_user_department'])->name('settings.edit.user.department');
+    //Route::any('/settings/edit/user/pwd/{id}', ['nocsrf' => TRUE,'uses' => 'SettingsController@edit_user_password'])->name('settings.edit.user.pwd');
 
     Route::any('/settings/add/user/dept', ['nocsrf' => TRUE,'uses' => 'SettingsController@create_user_department'])->name('settings.add.user.department');
     Route::any('/settings/add/reminder/type', ['nocsrf' => TRUE,'uses' => 'SettingsController@create_reminder_type'])->name('settings.add.reminder.type');
