@@ -59,7 +59,7 @@ class ManagerController extends Controller
         </button>
         <ul class='dropdown-menu pull-right' role='menu'>
 			<li><a href='#' data-url='" . route('settings.edit.user.password',$list->id) . "' data-toggle=\"modal\" data-target=\"#editPwd\" > Edit password </a></li>
-			<li><a href='#' data-url='" . route('settings.edit.user.profile',$list->id) . "' data-name='".$list->name."' data-dept_id='".$list->dept_id."' data-toggle=\"modal\" data-target=\"#editProfile\" > Edit profile </a></li>                 
+			<li><a href='#' data-url='" . route('settings.edit.user.profile',$list->id) . "' data-name='".$list->name."' data-email='".$list->email."' data-dept_id='".$list->dept_id."' data-toggle=\"modal\" data-target=\"#editProfile\" > Edit profile </a></li>                 
         </ul>
         </div>";
             })

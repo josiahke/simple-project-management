@@ -29,6 +29,9 @@
                         <div class="tab-content">
                             <div id="t1" class="tab-pane fade in active">
 
+                                <a href='#' class="pull-right btn btn-default" data-url='{{route('settings.add.user.profile')}}' data-toggle="modal" data-target="#editProfile" > Add New </a>
+
+
                                 <table class="table table-bordered table-striped table-hover" id="users" width="100%">
                                     <thead>
                                     <tr>
@@ -503,6 +506,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label> Email : </label>
+                                <div >
+                                    <input type="text" value="" class="form-control validate[required,custom[email]]" name="email" id="email" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label> Department : </label>
                                 <div >
                                     {{--<input type="text" value="" name="name" id="name" placeholder="">--}}
@@ -538,6 +548,7 @@
             $('#editProfileForm').attr('action', button.data('url'));
             $('#editProfileForm #name').val(button.data('name'));
             $('#editProfileForm #dept_id').val(button.data('dept_id'));
+            $('#editProfileForm #email').val(button.data('email'));
             // $('#editProfileForm #dept_id').val(button.data('role_id'));
         })
     </script>

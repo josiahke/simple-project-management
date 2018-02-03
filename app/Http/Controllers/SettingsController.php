@@ -167,14 +167,16 @@ class SettingsController extends Controller
     public function create_user (Request $request){
         $new = new User();
         $data = $request->except('_token');
-        $data['password'] = Hash::make($request->get('password'));
+        $data['password'] = Hash::make(('password'));
         $new->fill($data);
         $saved = $new->save();
         if (!$saved){
             return  $this->invalid_request('no','user was not created','error');
         }
         else
-        {
+        {   //sync roles
+            $new->assignRole(2);
+            $new->save();
             return  $this->complete_request('no','user was created','success');
         }
     }
