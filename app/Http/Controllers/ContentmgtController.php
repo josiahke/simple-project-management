@@ -4,30 +4,20 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use \App\library\CustomResponses;
 use \App\Models\Task;
 
 
 class ContentmgtController extends Controller
 {
+    use CustomResponses;
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function invalid_request($api = 'no',$message='invalid request',$message_type='') {
-        if ($api == 'yes') {
-            return response()->json(['message' => $message,'message_type' => $message_type]);
-        }
-        return redirect()->back()->withError($message);
-    }
 
-    public function complete_request($api='no',$message='', $message_type='') {
-        if ($api == 'yes') {
-            return response()->json(['message' => $message, 'message_type' => $message_type ]);
-        }
-        return redirect()->back()->withError($message);
-    }
 
     public function create_task (Request $request) {
         if ($request->isMethod('post')) {

@@ -16,6 +16,10 @@ Route::get('/', function () {
     //return view('welcome');
     return redirect()->route('login');
 });
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/');
+});
 
 Auth::routes();
 
