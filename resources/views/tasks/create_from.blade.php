@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label>Due Date</label>
-                            <input name="due_date" class="form-control validate[required]" data-provide="datepicker" >
+                            <input name="due_date" class="form-control validate[required] datepicker" >
                         </div>
 
                         <div class="form-group">
