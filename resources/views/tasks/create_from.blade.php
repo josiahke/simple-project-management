@@ -113,11 +113,11 @@
         function checkvalue(val)
         {
             if(val==="private") {
-                document.getElementById('user_id').removeAttribute('disabled'); //.style.display='block';
-                document.getElementById('dept_id').removeAttribute('disabled'); //style.display='block';
+                document.getElementById("user_id").disabled = false;
+                document.getElementById("dept_id").disabled = false;
             } else {
-                document.getElementById('user_id').setAttribute('disabled') //.Attributes('disabled');
-                document.getElementById('dept_id').setAttribute('disabled') //.Attributes('disabled');
+                document.getElementById("user_id").disabled = true;
+                document.getElementById("dept_id").disabled = true;
             }
         }
     </script>
