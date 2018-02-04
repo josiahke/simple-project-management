@@ -48,7 +48,9 @@ class TasksController extends Controller
 
         $task_category = TaskCategory::get();
         $task_priority = TaskPriority::get();
-        return view('tasks.create_from',compact('user_dept','users','task_category','task_priority'));
+        $task_reminder = TaskReminder::get();
+
+        return view('tasks.create_from',compact('user_dept','users','task_category','task_priority','task_reminder'));
     }
 
     public function create_task (Request $request) {
@@ -59,13 +61,14 @@ class TasksController extends Controller
                 'due_date' => 'required|date|after_or_equal:'.Carbon::today(),
                 'priority_id' => 'required',
                 'category_id' => 'required',
+                'type' => 'required',
             ]);
             if ($validator->fails()) {
                 //return redirect()->back()->withError('Enter valid username and/or password. Please check you input once again');
                 $this->invalid_request('no','enter valid information','warning');
             } else {
                 $task = new Task();
-                $task->fill($request->except('_token','access_'));
+                $task->fill($request->except('_token','user_id','dept_id'));
                 $saved = $task->save();
                 if ($saved){
                     //assign users

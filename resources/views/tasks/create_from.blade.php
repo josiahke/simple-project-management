@@ -11,6 +11,8 @@
 
 @section('content')
 
+    <h3>Create a New </h3>
+
     <div class="container-fluid">
 
         {!! Form::open(['route'=>'tasks.create','class'=>'form' , 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
@@ -49,7 +51,7 @@
 
                         <div class="form-group">
                             <label>Category</label>
-                            <select name="priority_id" id="" class="form-control validate['required']">
+                            <select name="category_id" id="" class="form-control validate['required']">
                                 <option value=""> select one </option>
                                 @foreach($task_category as $list)
                                     <option value="{{$list->id}}"> {{$list->name}} </option>
@@ -62,6 +64,16 @@
                             <select name="type" id="" class="form-control validate['required']" onchange='checkvalue(this.value)' >
                                 <option value="public"> Public </option>
                                 <option value="private"> Private </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Assign User</label>
+                            <select name="assigned_user" id="" class="form-control validate['required']">
+                                <option value="{{auth()->user()->id}}"> my self </option>
+                                @foreach($users as $list)
+                                    <option value="{{$list->id}}"> {{$list->name}} </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -102,9 +114,16 @@
 
                         <div class="form-group">
                             <label> File attachment </label>
-                            <input type="file" name="myfiles" multiple >
+                            <input type="file" name="myfiles[]" multiple >
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Save Changes </div>
+                    <div class="panel-body">
+                        {!!Form::submit('Create Task',['class' => 'btn btn-default'] )!!}
                     </div>
                 </div>
 
