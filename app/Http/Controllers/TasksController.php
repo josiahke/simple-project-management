@@ -75,6 +75,9 @@ class TasksController extends Controller
                     //self::create_user_access($request,$saved);
                     //notification group
                     //self::create_user_notifications($request,$saved);
+                    if($request->hasFile('myfiles')) {
+                        self::uploadFiles($request,$task);
+                    }
                     //done
                     return $this->complete_request('no','Task created','success');
                 }
@@ -82,6 +85,20 @@ class TasksController extends Controller
             }
         }
         return $this->invalid_request('no','invalid request','error');
+    }
+
+    public function uploadFiles ($request,$task) {
+        //dd($task);
+        $files = $request->file('myfiles');
+        foreach ($files as $file) {
+            $filename = $file->store('uploads');
+            TaskAttachment::create([
+                'task_id' => $task->id,
+                'name' => $filename,
+                'file' => $filename
+            ]);
+        }
+        return true;
     }
 
     public function create_user_access ($request,$task) {
@@ -102,7 +119,8 @@ class TasksController extends Controller
         return Datatables::of(Task::with('priority','category')
             ->where('status','<>', 'complete')
             ->where('assigned_user','=', auth()->user()->id)
-            ->take(10)->orderBy('created_at'))
+            ->take(10)->orderBy('due_date')
+        )
         ->make();
     }
 

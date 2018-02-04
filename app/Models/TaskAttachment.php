@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
+use Auth;
 
 /**
  * Class TaskAttachment
@@ -38,4 +39,21 @@ class TaskAttachment extends Eloquent
 		'created_by',
 		'status'
 	];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model)
+        {
+            $model->created_by = Auth::user()->id;
+            //$model->updated_by = Auth::user()->id;
+        });
+
+        static::updating(function($model)
+        {
+            //$model->updated_by = Auth::user()->id;
+        });
+    }
+
 }
