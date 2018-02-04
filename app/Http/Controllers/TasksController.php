@@ -65,23 +65,23 @@ class TasksController extends Controller
             ]);
             if ($validator->fails()) {
                 //return redirect()->back()->withError('Enter valid username and/or password. Please check you input once again');
-                $this->invalid_request('no','enter valid information','warning');
+                return $this->invalid_request('no','enter valid information','warning');
             } else {
                 $task = new Task();
                 $task->fill($request->except('_token','user_id','dept_id'));
                 $saved = $task->save();
                 if ($saved){
                     //assign users
-                    self::create_user_access($request,$saved);
+                    //self::create_user_access($request,$saved);
                     //notification group
-                    self::create_user_notifications($request,$saved);
+                    //self::create_user_notifications($request,$saved);
                     //done
-                    $this->complete_request('no','Task created','success');
+                    return $this->complete_request('no','Task created','success');
                 }
-                $this->invalid_request('no','Task not created','error');
+                return $this->invalid_request('no','Task not created','error');
             }
         }
-        $this->invalid_request('no','invalid request','error');
+        return $this->invalid_request('no','invalid request','error');
     }
 
     public function create_user_access ($request,$task) {
