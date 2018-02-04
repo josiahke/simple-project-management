@@ -14,6 +14,7 @@
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('js/datatables.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-select.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('js/validation/validationEngine.jquery.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-datepicker.min.css')}}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -101,6 +102,9 @@
 {{--<script src="{{ asset('js/app.js') }}"></script>--}}
 <script type="text/javascript" src="{{asset('js/validation/jquery.validationEngine-en.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/validation/jquery.validationEngine.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap-select.min.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -120,6 +124,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        $('.selectpicker').selectpicker();
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: new Date(),
+            minDate: today
+        });
     });
 </script>
 
@@ -130,19 +142,6 @@
         if (curpage == url ) 	{
             $(this).addClass('active');
         }
-    });
-</script>
-
-<script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
-
-<script>
-    var date = new Date();
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        startDate: new Date(),
-        minDate: today
     });
 </script>
 

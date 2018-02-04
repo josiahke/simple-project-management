@@ -40,5 +40,5 @@ class TaskUserNotify extends Eloquent
 		'status'
 	];
 
-	
+
 }
