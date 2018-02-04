@@ -73,7 +73,7 @@
                     [5, 10, 15, 20, 25, -1],
                     [5, 10, 15, 20, 25, "All"] // change per page values here
                 ],
-                "pageLength": 10,
+                "pageLength": 5,
                 "ajax": {
                     url: '{!! route('tasks.list.mine.latest') !!}',
                     method: 'POST'
@@ -98,7 +98,7 @@
                     [5, 10, 15, 20, 25, -1],
                     [5, 10, 15, 20, 25, "All"] // change per page values here
                 ],
-                "pageLength": 10,
+                "pageLength": 5,
                 "ajax": {
                     url: '{!! route('tasks.list.notices') !!}',
                     method: 'POST'

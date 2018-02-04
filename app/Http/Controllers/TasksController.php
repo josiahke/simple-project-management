@@ -72,9 +72,10 @@ class TasksController extends Controller
                 $saved = $task->save();
                 if ($saved){
                     //assign users
-                    //self::create_user_access($request,$saved);
+                    self::create_user_access($request,$task);
                     //notification group
-                    //self::create_user_notifications($request,$saved);
+                    self::create_user_notifications($request,$task);
+                    //upload files
                     if($request->hasFile('myfiles')) {
                         self::uploadFiles($request,$task);
                     }
@@ -88,7 +89,6 @@ class TasksController extends Controller
     }
 
     public function uploadFiles ($request,$task) {
-        //dd($task);
         $files = $request->file('myfiles');
         foreach ($files as $file) {
             $filename = $file->store('uploads');
@@ -102,12 +102,43 @@ class TasksController extends Controller
     }
 
     public function create_user_access ($request,$task) {
-        $new = new TaskUserAccess();
-
+        $users= $request->get('user_id');
+        $dept= $request->get('dept_id');
+        foreach ($users as $user ) {
+            TaskUserAccess::create([
+                'task_id' => $task->id,
+                'user_id' => $user,
+                'level_type' => 'user'
+            ]);
+        }
+        foreach ($dept as $user ) {
+            TaskUserAccess::create([
+                'task_id' => $task->id,
+                'user_id' => $user,
+                'level_type' => 'department'
+            ]);
+        }
+        return true;
     }
 
     public function create_user_notifications ($request,$task) {
-
+        $users= $request->get('notify_user_id');
+        $dept= $request->get('notify_dept_id');
+        foreach ($users as $user ) {
+            TaskUserAccess::create([
+                'task_id' => $task->id,
+                'user_id' => $user,
+                'level_type' => 'user'
+            ]);
+        }
+        foreach ($dept as $user ) {
+            TaskUserAccess::create([
+                'task_id' => $task->id,
+                'user_id' => $user,
+                'level_type' => 'department'
+            ]);
+        }
+        return true;
     }
 
     public function add_task_attachment (Request $request) {
