@@ -24,7 +24,20 @@ Route::get('/logout', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');#
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'tasks'], function () {
+    Route::any('/create', 'TasksController@create_task_form')->name('tasks.create.form');
+    Route::any('/mine', 'TasksController@index')->name('tasks.home');
+    Route::any('/dept', 'TasksController@indexDept')->name('tasks.dept');
+    Route::any('/other', 'TasksController@indexOther')->name('tasks.other');
+    //brief
+    Route::any('/my/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.mine');
+    Route::any('/assigned/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.assigned');
+    Route::any('/dept/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.dept');
+    Route::any('/other/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.other');
+
+});
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'settings'], function () {
     Route::any('/settings/edit/users/profile/{id}', ['nocsrf' => TRUE,'uses' => 'SettingsController@edit_user_profile'])->name('settings.edit.user.profile');
@@ -56,6 +69,5 @@ Route::group(['middleware' => ['auth','manager'], 'prefix' => 'manager'], functi
 // normal user account urls
 Route::group(['middleware' => ['auth','member'], 'prefix' => 'staff'], function () {
     Route::any('/home', 'StaffController@index')->name('staff.home');
-    Route::any('/tasks', 'StaffController@MyTasks')->name('staff.tasks');
-
+    //Route::any('/tasks', 'StaffController@MyTasks')->name('staff.tasks');
 });

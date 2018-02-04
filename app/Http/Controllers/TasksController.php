@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserDepartment;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 
 use Auth;
 use Validator;
@@ -29,13 +32,19 @@ use \App\Models\TaskProgress;
 use \App\Models\TaskReminder;
 
 
-class ContentmgtController extends Controller
+class TasksController extends Controller
 {
     use CustomResponses;
 
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function create_task_form (Request $request) {
+        $user_dept = UserDepartment::all();
+        $users = User::where('id','<>', auth()->user()->id)->all();
+        return view('tasks.create_from',compact('user_dept','users'));
     }
 
     public function create_task (Request $request) {
