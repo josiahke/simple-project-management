@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
 
-        {!! Form::open(['route'=>'tasks.create','class'=>'form']) !!}
+        {!! Form::open(['route'=>'tasks.create','class'=>'form' , 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="row">
             <div class="col-md-6">
@@ -95,6 +95,20 @@
 
                     </div>
                 </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"> File Attachment </div>
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label> File attachment </label>
+                            <input type="file" name="myfiles" multiple >
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
