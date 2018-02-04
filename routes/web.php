@@ -28,14 +28,17 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');#
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'tasks'], function () {
     Route::any('/create', 'TasksController@create_task_form')->name('tasks.create.form');
+    Route::any('/save', 'TasksController@create_task')->name('tasks.create');
     Route::any('/mine', 'TasksController@index')->name('tasks.home');
     Route::any('/dept', 'TasksController@indexDept')->name('tasks.dept');
     Route::any('/other', 'TasksController@indexOther')->name('tasks.other');
     //brief
-    Route::any('/my/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.mine');
-    Route::any('/assigned/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.assigned');
-    Route::any('/dept/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.dept');
-    Route::any('/other/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@create_user_department'])->name('tasks.list.other');
+    Route::any('/my/tasks/notice', ['nocsrf' => TRUE,'uses' => 'TasksController@ListtasksNotice'])->name('tasks.list.notices');
+    Route::any('/my/tasks/latest', ['nocsrf' => TRUE,'uses' => 'TasksController@ListtasksLatest'])->name('tasks.list.mine.latest');
+    Route::any('/my/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@listtasksatest'])->name('tasks.list.mine');
+    Route::any('/assigned/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@ListtasksAssigned'])->name('tasks.list.assigned');
+    Route::any('/dept/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@ListtasksDept'])->name('tasks.list.dept');
+    Route::any('/other/tasks', ['nocsrf' => TRUE,'uses' => 'TasksController@ListtasksOther'])->name('tasks.list.other');
 
 });
 

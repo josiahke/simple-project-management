@@ -44,7 +44,7 @@ class Task extends Eloquent
 		'name',
 		'description',
 		'due_date',
-		'status'
+		'status','assigned_user','type'
 	];
 
     public static function boot()
@@ -61,6 +61,16 @@ class Task extends Eloquent
         {
             //$model->updated_by = Auth::user()->id;
         });
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\TaskCategory','id','category_id');
+    }
+
+    public function priority()
+    {
+        return $this->hasOne('App\Models\TaskPriority','id','priority_id');
     }
 
 
