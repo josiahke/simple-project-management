@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label>Type</label>
-                            <select name="type" id="" class="form-control validate['required']">
+                            <select name="type" id="" class="form-control validate['required']" onchange='checkvalue(this.value)' >
                                 <option value="public"> Public </option>
                                 <option value="private"> Private </option>
                             </select>
@@ -75,7 +75,7 @@
 
                         <div class="form-group">
                             <label> User Access </label>
-                            <select name="user_id[]" id="" class="form-control validate[required]" multiple>
+                            <select name="user_id[]" disabled="disabled" id="user_id" class="form-control validate[required]" multiple>
                                 <option value=""> select one </option>
                                 @foreach($users as $list)
                                     <option value="{{$list->id}}"> {{$list->name}} </option>
@@ -85,7 +85,7 @@
 
                         <div class="form-group">
                             <label> Department </label>
-                            <select name="dept_id[]" id="" class="form-control validate['required']" multiple>
+                            <select name="dept_id[]" disabled="disabled" id="dept_id" class="form-control validate['required']" multiple>
                                 <option value=""> select one </option>
                                 @foreach($user_dept as $list)
                                     <option value="{{$list->id}}"> {{$list->name}} </option>
@@ -103,5 +103,23 @@
 
     </div>
 
+
+@endsection
+
+
+@section('js')
+
+    <script>
+        function checkvalue(val)
+        {
+            if(val==="private") {
+                document.getElementById('user_id').removeAttribute('disabled'); //.style.display='block';
+                document.getElementById('dept_id').removeAttribute('disabled'); //style.display='block';
+            } else {
+                document.getElementById('user_id').setAttribute('disabled') //.Attributes('disabled');
+                document.getElementById('dept_id').setAttribute('disabled') //.Attributes('disabled');
+            }
+        }
+    </script>
 
 @endsection

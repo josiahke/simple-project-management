@@ -137,9 +137,12 @@
 <script type="text/javascript" src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
 
 <script>
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
-        startDate: '0d'
+        startDate: new Date(),
+        minDate: today
     });
 </script>
 
